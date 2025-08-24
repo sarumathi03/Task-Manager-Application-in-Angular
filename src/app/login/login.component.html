@@ -1,0 +1,32 @@
+<div class="login-wrapper">
+  <div class="login-container">
+
+    <div class="image-section">
+      <img src="assets/images/task.png" alt="task_manager" />
+    </div>
+ 
+    <div class="form-section">
+      <h1 class="main-heading">Welcome to Task Manager Application</h1>
+      <h2 class="sub-heading">Login</h2>
+
+      <form [formGroup]="loginForm" (ngSubmit)="login()" data-testid="login-form">
+        <label for="username">Username:</label>
+        <input id="username" type="text" formControlName="username" data-testid="username-input"/>
+        <small class="text-danger" *ngIf="loginForm.get('username')?.invalid && loginForm.get('username')?.touched">
+        Username is required.
+        </small>
+
+        <label for="password">Password:</label>
+        <input id="password" type="password" formControlName="password" data-testid="password-input"/>
+        <small class="text-danger" *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched">
+        Password is required.
+        </small>
+
+        <button type="submit" data-testid="submit-button">Submit</button>
+
+        <div class="error" *ngIf="error" data-testid="error-message">{{ error }}</div>
+      </form>
+    </div>
+  </div>
+</div>
+
